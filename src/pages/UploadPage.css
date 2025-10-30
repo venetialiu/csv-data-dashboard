@@ -1,5 +1,25 @@
 button {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     background-color: #e8e8e8;
+    cursor: pointer;
 }
 
+
+.page-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;       
+  align-items: center;        
+  gap: 1rem;           
+}
+
+input[type="file"] {
+    padding: 0.5rem;
+}

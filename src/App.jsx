@@ -1,3 +1,7 @@
+/*
+- display & routes ResultsPage & UploadPag
+*/
+
 import { useState } from 'react';
 import './App.css';
 import UploadPage from './pages/UploadPage';

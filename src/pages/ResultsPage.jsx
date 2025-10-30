@@ -1,3 +1,7 @@
+/*
+- display table, summary, & charts
+*/
+
 import DataTable from '../components/DataTable';
 import StatsSummary from '../components/StatsSummary';
 import QuantityRevenueChart from '../components/QuantityRevenueChart';

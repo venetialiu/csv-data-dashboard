@@ -6,7 +6,9 @@ table {
   border-radius: 12px;
 }
 
-.data-table{
+.inner-table{
+    width: 100%;
+    border-collapse: collapse;
     max-height: 700px;       /* limit table height */
     overflow-y: auto;        /* vertical scroll if content exceeds height */
     overflow-x: auto;     

@@ -1,3 +1,16 @@
+/*
+- parse CSV with papaparse
+- check for general parsing errors (from papaparse)
+- manual check:
+    - CSV empty
+    - incorrect / missing columns
+    - clean & normalize rows
+        - drop complete empty rows
+        - normalize columns names to lower case (for the keys)
+        - type conversion & remove white space
+        - ensure values are not empty
+*/
+
 import { parse } from 'papaparse';
 
 const parseCSV = ( file ) => {
@@ -60,8 +73,11 @@ const parseCSV = ( file ) => {
 
                         // remove white spaces & convert numeric strings to numbers
                         // ignores any extra columns
+                        // data type conversion
+                        const dateValue = normalized.date?.trim();
+                        const parsedDate = dateValue ? new Date(dateValue) : null;
                         return {
-                            date: normalized.date?.trim(),
+                            date: parsedDate,
                             product: normalized.product?.trim(),
                             quantity: Number(normalized.quantity),
                             revenue: Number(normalized.revenue),

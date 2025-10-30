@@ -1,9 +1,13 @@
 import { ComposedChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Scatter } from 'recharts';
 
 const QuantityRevenueChart = ({ data }) => {
-    // convert string dates into dates
-    const sortedData = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
-
+    // Convert Date objects -> numeric timestamps 
+    // then sort by date ascending
+    const processedData = data.map((d) => ({
+        ...d,
+        date: d.date instanceof Date ? d.date.getTime() : new Date(d.date).getTime(),
+    }))
+    .sort((a, b) => a.date - b.date);
 
     return (
         <>
@@ -11,7 +15,7 @@ const QuantityRevenueChart = ({ data }) => {
             <ComposedChart
                 style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
                 responsive
-                data={sortedData}
+                data={processedData}
                 margin={{
                     top: 20,
                     right: 0,
@@ -20,12 +24,28 @@ const QuantityRevenueChart = ({ data }) => {
             }}
             >
                 <CartesianGrid stroke="#f5f5f5" />
-                <XAxis dataKey="date" scale="band" />
+                <XAxis
+                    dataKey="date"
+                    type="number"
+                    scale="time"
+                    domain={['auto', 'auto']}
+                    tickFormatter={(tick) =>
+                        new Date(tick).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+                    }
+                />
                 <YAxis width="auto" />
-                <Tooltip />
+                <Tooltip 
+                    labelFormatter={(value) =>
+                        new Date(value).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        })
+                    }
+                />
                 <Legend />
                 <Area type="monotone" dataKey="revenue" fill="#8884d8" stroke="#8884d8" />
-                <Bar dataKey="quantity" barSize={20} fill="#413ea0" />
+                <Bar dataKey="quantity" barSize={Math.max(2, 800 / data.length)}  fill="#413ea0" />
             </ComposedChart>
         </>
     );

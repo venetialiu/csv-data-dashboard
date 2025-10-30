@@ -1,3 +1,10 @@
+/*
+- file upload
+- file validation
+- triggers CSV parsing
+- switch to ResultsPage if parsing success
+*/
+
 import { useState } from 'react';
 import parseCSV from '../utils/parseCSV';
 import './UploadPage.css'
@@ -5,7 +12,6 @@ import './UploadPage.css'
 const UploadPage = ({ onResults }) => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
 
     // handle file change
     const handleChange = (e) => {
@@ -31,9 +37,7 @@ const UploadPage = ({ onResults }) => {
         }
         
         // parse file
-        setLoading(true);
         const result = await parseCSV(file);
-        setLoading(false);
 
         // parsing failure: catch error
         if (!result.ok) {
@@ -47,14 +51,14 @@ const UploadPage = ({ onResults }) => {
     }
 
     return (
-        <>
+        <div className="page-wrapper">
             <h2>Upload your CSV file.</h2>
             <form onSubmit={handleSubmit}>
                 <input type="file" accept=".csv" onChange={handleChange}/>
                 <button type="submit">submit</button>
             </form>
             {error !== "" && <h3>{error}</h3>}
-        </>
+        </div>
     );
 
 }
