@@ -1,6 +1,6 @@
 # CSV Data Dashboard
 
-A single-page React web application that allows users to upload a CSV file containing sales data and instantly visualize it through tables, charts, and summary statistics.
+A single-page React web application that allows users to upload a CSV file containing sales data and visualize it through tables, charts, and summary statistics.
 
 ---
 
