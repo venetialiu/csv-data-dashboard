@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import parseCSV from '../utils/parseCSV';
+import './UploadPage.css'
 
 const UploadPage = ({ onResults }) => {
     const [file, setFile] = useState(null);
@@ -9,6 +10,7 @@ const UploadPage = ({ onResults }) => {
     // handle file change
     const handleChange = (e) => {
         const selected = e.target.files?.[0];
+        if (!selected) return;
         setFile(selected);
         setError("");
     }
@@ -46,9 +48,9 @@ const UploadPage = ({ onResults }) => {
 
     return (
         <>
-            <h2>Upload you're CSV file.</h2>
+            <h2>Upload your CSV file.</h2>
             <form onSubmit={handleSubmit}>
-                <input key={file? file.name : 'empty'} type="file" accept=".csv" onChange={handleChange}/>
+                <input type="file" accept=".csv" onChange={handleChange}/>
                 <button type="submit">submit</button>
             </form>
             {error !== "" && <h3>{error}</h3>}

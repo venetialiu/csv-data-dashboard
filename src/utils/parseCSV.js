@@ -59,6 +59,7 @@ const parseCSV = ( file ) => {
                         }
 
                         // remove white spaces & convert numeric strings to numbers
+                        // ignores any extra columns
                         return {
                             date: normalized.date?.trim(),
                             product: normalized.product?.trim(),

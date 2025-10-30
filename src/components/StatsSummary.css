@@ -1,0 +1,36 @@
+.stats-summary {
+  margin: 2rem 0;
+  padding: 2rem;
+  background-color: rgb(236, 237, 245);
+  border-radius: 12px;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between; 
+  align-items: stretch;
+  flex-wrap: wrap; 
+  gap: 1rem; 
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 50px;
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.stat-label {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #222;
+}
