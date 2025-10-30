@@ -28,7 +28,7 @@ A single-page React web application that allows users to upload a CSV file conta
 ---
 
 ## Project Structure
-
+```
 src/
 ├── components/
 │ ├── DataTable.jsx # Renders parsed CSV data in a table
@@ -47,3 +47,4 @@ src/
 ├── App.jsx # Main application logic and view toggling
 ├── main.jsx # React entry point
 └── styles.css # Global and layout styles
+```
