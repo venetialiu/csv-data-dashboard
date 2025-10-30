@@ -1,16 +1,49 @@
-# React + Vite
+# CSV Data Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A single-page React web application that allows users to upload a CSV file containing sales data and instantly visualize it through tables, charts, and summary statistics.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- Upload CSV file through file input  
+- Parse CSV using Papa Parse  
+- Display clean, responsive data tables  
+- Compute total revenue, quantity, and unique product count  
+- Render bar and line charts using Recharts  
+- Handle validation and file errors gracefully  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Layer | Tools | Description |
+|--------|--------|-------------|
+| Language | JavaScript | Core applicatoin logic |
+| Framework | React (Vite) | Lightweight frontend development |
+| Parsing | Papa Parse | Fast and reliable CSV parsing |
+| Charting | Recharts | React-friendly data visualization |
+| Deployment | GitHub Pages / Vercel | Simple CI/CD and static hosting |
+
+---
+
+## Project Structure
+
+src/
+├── components/
+│ ├── DataTable.jsx # Renders parsed CSV data in a table
+│ ├── StatsSummary.jsx # Displays computed statistics (revenue, quantity, etc.)
+│ ├── QuantityRevenueChart.jsx # Revenue/quantity over time visualization
+│ ├── ProductChart.jsx # Product-level comparison chart
+│ └── ErrorBanner.jsx # Displays validation and error messages
+│
+├── pages/
+│ ├── UploadPage.jsx # File upload and validation page
+│ └── ResultsPage.jsx # Displays table, stats, and charts
+│
+├── utils/
+│ └── parseCSV.js # Core CSV parsing and validation logic
+│
+├── App.jsx # Main application logic and view toggling
+├── main.jsx # React entry point
+└── styles.css # Global and layout styles
